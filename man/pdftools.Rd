@@ -27,15 +27,21 @@ pdf_toc(pdf, opw = "", upw = "")
 \item{upw}{string with user password to open pdf}
 }
 \description{
-Utilities based on libpoppler for extracting text, fonts,
-attachements and metadata from a pdf file.
+Utilities based on libpoppler for extracting text, fonts, attachments
+and metadata from a pdf file.
+}
+\details{
+Poppler is pretty verbose when encountering minor errors in PDF files,
+in especially \code{\link{pdf_text}}. These messages are usually safe
+to ignore, use \code{\link{suppressMessages}} to hide them alltogether.
 }
 \examples{
-download.file("http://arxiv.org/pdf/1403.2805.pdf", "1403.2805.pdf", mode = "wb")
-info <- pdf_info("1403.2805.pdf")
-text <- pdf_text("1403.2805.pdf")
-fonts <- pdf_fonts("1403.2805.pdf")
-files <- pdf_attachments("1403.2805.pdf")
+# Just a random pdf file
+file.copy(file.path(Sys.getenv("R_DOC_DIR"), "NEWS.pdf"), "news.pdf")
+info <- pdf_info("news.pdf")
+text <- pdf_text("news.pdf")
+fonts <- pdf_fonts("news.pdf")
+files <- pdf_attachments("news.pdf")
 }
 \seealso{
 Other pdftools: \code{\link{pdf_render_page}}
