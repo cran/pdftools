@@ -1,7 +1,7 @@
-5698578de84a6dfb1e25d2a6d84a1b22 *DESCRIPTION
+38e30098f1531fb06aad705c4fd54b93 *DESCRIPTION
 91443a13b3d89ea22bfa1222461b0111 *LICENSE
 91e0506143daa33b24f24a973fc3105e *NAMESPACE
-ef36f365d7ddc8b244a91d2142604842 *NEWS
+3249e21fc586799eeb080e3ef5d23342 *NEWS
 6d7a810aaf53727aaf3e1dc3fe7c4fc1 *R/RcppExports.R
 521ff77730c9d53018371d98f73b0954 *R/render.R
 e9e0b9dceb03439840d454a9b8d81dd8 *R/tools.R
@@ -9,8 +9,8 @@ e9e0b9dceb03439840d454a9b8d81dd8 *R/tools.R
 c6aa8e9f43e720fce3f75aa0ce6dbc93 *man/pdf_render_page.Rd
 83aa6508ae643022b9c9405d7c399899 *man/pdftools.Rd
 111e1efb50ff675feb507ea42a24b300 *src/Makevars.in
-c1fa13ef1a3d0091c89acd71c71bc5b7 *src/Makevars.win
+d6e3d3ddc7528c4928f0fd3fc64f632c *src/Makevars.win
 ef6c1807646779664110e9a086021f99 *src/RcppExports.cpp
 dcaf2bcce997f120b8127ef569f09f36 *src/bindings.cpp
 1f9a3e6a7a29c8e1d36ad5b40f35bb09 *src/init.cpp
-770d2da3bccc612a924278e24eb65b31 *tools/winlibs.R
+391a575599fab481c48f5308b738cdd5 *tools/winlibs.R

@@ -1,7 +1,7 @@
 Package: pdftools
 Type: Package
 Title: Extract Text and Data from PDF Documents
-Version: 0.2
+Version: 0.3
 Author: Jeroen Ooms
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 Description: Utilities based on libpoppler for extracting text,
@@ -17,6 +17,6 @@ LinkingTo: Rcpp
 Suggests: jpeg, png, webp
 RoxygenNote: 5.0.1
 NeedsCompilation: yes
-Packaged: 2016-03-04 16:36:42 UTC; jeroen
+Packaged: 2016-04-07 23:10:36 UTC; jeroen
 Repository: CRAN
-Date/Publication: 2016-03-04 22:25:06
+Date/Publication: 2016-04-08 10:44:04
