@@ -2,11 +2,11 @@
 % Please edit documentation in R/render.R
 \name{pdf_render_page}
 \alias{pdf_render_page}
-\alias{poppler_config}
 \alias{render}
+\alias{poppler_config}
 \title{Render PDF to bitmap}
 \usage{
-pdf_render_page(pdf, page = 1, dpi = 72, numeric = TRUE, opw = "",
+pdf_render_page(pdf, page = 1, dpi = 72, numeric = FALSE, opw = "",
   upw = "")
 
 poppler_config()
