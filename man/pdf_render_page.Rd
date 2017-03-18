@@ -53,4 +53,3 @@ webp::write_webp(bitmap_raw, "page.webp")
 \seealso{
 Other pdftools: \code{\link{pdf_info}}
 }
-
