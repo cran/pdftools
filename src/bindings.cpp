@@ -1,3 +1,6 @@
+#define R_NO_REMAP
+#define STRICT_R_HEADERS
+
 #include <poppler-document.h>
 #include <poppler-page.h>
 #include <poppler-font.h>
@@ -11,6 +14,25 @@
 
 using namespace Rcpp;
 using namespace poppler;
+
+static char poppler_data[4000] = "";
+
+// [[Rcpp::export]]
+void set_poppler_data(std::string path){
+  strcpy(poppler_data, path.c_str());
+}
+
+// Call this after initiating document but before page
+#ifdef BUNDLE_POPPLER_DATA
+#include <GlobalParams.h>
+void find_poppler_data(){
+  static bool initiated = false;
+  if (!initiated && strlen(poppler_data)){
+    globalParams = new GlobalParams(poppler_data);
+    initiated = true;
+  }
+}
+#endif
 
 String ustring_to_utf8(ustring x){
   byte_array str = x.to_utf8();
@@ -70,6 +92,9 @@ std::string font_string(font_info::type_enum x){
 
 document *read_raw_pdf(RawVector x, std::string opw, std::string upw){
   document *doc = document::load_from_raw_data(	(const char*) x.begin(), x.length(), opw, upw);
+#ifdef BUNDLE_POPPLER_DATA
+  find_poppler_data();
+#endif
   if(!doc)
     throw std::runtime_error("PDF parsing failure.");
   if(doc->is_locked())
@@ -244,14 +269,16 @@ RawVector poppler_render_page(RawVector x, int pagenum, double dpi, std::string 
 
 // [[Rcpp::export]]
 std::vector<std::string> poppler_convert(RawVector x, std::string format, std::vector<int> pages,
-                          std::vector<std::string> names, double dpi, std::string opw, std::string upw) {
+                          std::vector<std::string> names, double dpi, std::string opw, std::string upw,
+                          bool verbose = true) {
   if(!page_renderer::can_render())
     throw std::runtime_error("Rendering not supported on this platform!");
   document *doc = read_raw_pdf(x, opw, upw);
   for(size_t i = 0; i < pages.size(); i++){
     int pagenum = pages[i];
     std::string filename = names[i];
-    Rprintf("Converting page %d to %s...", pagenum, filename.c_str());
+    if(verbose)
+      Rprintf("Converting page %d to %s...", pagenum, filename.c_str());
     page *p(doc->create_page(pagenum - 1));
     if(!p)
       throw std::runtime_error("Invalid page.");
@@ -263,7 +290,8 @@ std::vector<std::string> poppler_convert(RawVector x, std::string format, std::v
       throw std::runtime_error("PDF rendering failure.");
     if(!img.save(filename, format, dpi))
       throw std::runtime_error("Failed to save file" + filename);
-    Rprintf(" done!\n");
+    if(verbose)
+      Rprintf(" done!\n");
   }
   return names;
 }

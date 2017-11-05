@@ -1,7 +1,7 @@
 Package: pdftools
 Type: Package
 Title: Text Extraction, Rendering and Converting of PDF Documents
-Version: 1.4
+Version: 1.5
 Author: Jeroen Ooms
 Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
 Description: Utilities based on 'libpoppler' for extracting text, fonts, attachments and 
@@ -12,12 +12,15 @@ URL: https://ropensci.org/blog/2016/03/01/pdftools-and-jeroen (blog)
         https://github.com/ropensci/pdftools#readme (devel)
         https://poppler.freedesktop.org (upstream)
 BugReports: https://github.com/ropensci/pdftools/issues
-SystemRequirements: Poppler C++ interface library and headers
+SystemRequirements: Poppler C++ API: libpoppler-cpp-dev (deb) or
+        poppler-cpp-devel (rpm). The unit tests also require the
+        'poppler-data' package (rpm/deb)
+Encoding: UTF-8
 Imports: Rcpp (>= 0.12.12)
 LinkingTo: Rcpp
 Suggests: jpeg, png, webp, testthat
 RoxygenNote: 6.0.1
 NeedsCompilation: yes
-Packaged: 2017-08-31 21:23:21 UTC; jeroen
+Packaged: 2017-11-04 14:56:10 UTC; jeroen
 Repository: CRAN
-Date/Publication: 2017-09-01 09:47:40 UTC
+Date/Publication: 2017-11-05 15:03:15 UTC
