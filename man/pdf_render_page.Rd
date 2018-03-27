@@ -7,11 +7,11 @@
 \alias{poppler_config}
 \title{Render / Convert PDF}
 \usage{
-pdf_render_page(pdf, page = 1, dpi = 72, numeric = FALSE, opw = "",
-  upw = "")
+pdf_render_page(pdf, page = 1, dpi = 72, numeric = FALSE,
+  antialias = TRUE, opw = "", upw = "")
 
 pdf_convert(pdf, format = "png", pages = NULL, filenames = NULL,
-  dpi = 72, opw = "", upw = "", verbose = TRUE)
+  dpi = 72, antialias = TRUE, opw = "", upw = "", verbose = TRUE)
 
 poppler_config()
 }
@@ -23,6 +23,9 @@ poppler_config()
 \item{dpi}{resolution (dots per inch) to render}
 
 \item{numeric}{convert raw output to (0-1) real values}
+
+\item{antialias}{enable antialiasing. Must be \code{"text"} or \code{"draw"} or \code{TRUE} (both)
+or \code{FALSE} (neither).}
 
 \item{opw}{owner password}
 
@@ -71,3 +74,4 @@ webp::write_webp(bitmap_raw, "page.webp")
 \seealso{
 Other pdftools: \code{\link{pdf_info}}
 }
+\concept{pdftools}

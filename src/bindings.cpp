@@ -163,9 +163,10 @@ List poppler_pdf_info (RawVector x, std::string opw, std::string upw) {
 // [[Rcpp::export]]
 CharacterVector poppler_pdf_text (RawVector x, std::string opw, std::string upw) {
   document *doc = read_raw_pdf(x, opw, upw);
-  CharacterVector out;
+  CharacterVector out(doc->pages());
   for(int i = 0; i < doc->pages(); i++){
     page *p(doc->create_page(i));
+    if(!p) continue; //missing page
     page::text_layout_enum show_text_layout = page::physical_layout;
 
     /* Workaround for bug https://github.com/ropensci/pdftools/issues/7 */
@@ -174,9 +175,15 @@ CharacterVector poppler_pdf_text (RawVector x, std::string opw, std::string upw)
       target.set_right(target.right() * 2);
     }
 
+    /* Rescale page to start at 0 (#24) */
+    if(target.top() < 0){
+      target.set_bottom(target.bottom() - target.top());
+      target.set_top(0);
+    }
+
     /* Extract text */
     ustring str = p->text(target, show_text_layout);
-    out.push_back(ustring_to_utf8(str));
+    out[i] = ustring_to_utf8(str);
   }
   return out;
 }
@@ -240,7 +247,8 @@ List poppler_pdf_toc(RawVector x, std::string opw, std::string upw) {
 }
 
 // [[Rcpp::export]]
-RawVector poppler_render_page(RawVector x, int pagenum, double dpi, std::string opw, std::string upw) {
+RawVector poppler_render_page(RawVector x, int pagenum, double dpi, std::string opw, std::string upw,
+                              bool antialiasing = true, bool text_antialiasing = true) {
   if(!page_renderer::can_render())
     throw std::runtime_error("Rendering not supported on this platform!");
   document *doc = read_raw_pdf(x, opw, upw);
@@ -248,8 +256,8 @@ RawVector poppler_render_page(RawVector x, int pagenum, double dpi, std::string 
   if(!p)
     throw std::runtime_error("Invalid page.");
   page_renderer pr;
-  pr.set_render_hint(page_renderer::antialiasing, true);
-  pr.set_render_hint(page_renderer::text_antialiasing, true);
+  pr.set_render_hint(page_renderer::antialiasing, antialiasing);
+  pr.set_render_hint(page_renderer::text_antialiasing, text_antialiasing);
   image img = pr.render_page(p, dpi, dpi);
   if(!img.is_valid())
     throw std::runtime_error("PDF rendering failure.");
@@ -270,7 +278,7 @@ RawVector poppler_render_page(RawVector x, int pagenum, double dpi, std::string 
 // [[Rcpp::export]]
 std::vector<std::string> poppler_convert(RawVector x, std::string format, std::vector<int> pages,
                           std::vector<std::string> names, double dpi, std::string opw, std::string upw,
-                          bool verbose = true) {
+                          bool antialiasing = true, bool text_antialiasing = true, bool verbose = true) {
   if(!page_renderer::can_render())
     throw std::runtime_error("Rendering not supported on this platform!");
   document *doc = read_raw_pdf(x, opw, upw);
@@ -283,8 +291,8 @@ std::vector<std::string> poppler_convert(RawVector x, std::string format, std::v
     if(!p)
       throw std::runtime_error("Invalid page.");
     page_renderer pr;
-    pr.set_render_hint(page_renderer::antialiasing, true);
-    pr.set_render_hint(page_renderer::text_antialiasing, true);
+    pr.set_render_hint(page_renderer::antialiasing, antialiasing);
+    pr.set_render_hint(page_renderer::text_antialiasing, text_antialiasing);
     image img = pr.render_page(p, dpi, dpi);
     if(!img.is_valid())
       throw std::runtime_error("PDF rendering failure.");
