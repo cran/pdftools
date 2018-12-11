@@ -12,8 +12,17 @@
 #include <Rcpp.h>
 #include <cstring>
 
-#if 0 && defined(POPPLER_VERSION_MINOR) && (POPPLER_VERSION_MINOR >= 63 || POPPLER_VERSION_MAJOR > 0)
+/* Note: 0.72.1 is my internal build of 0.72.0 + backported UTF-8 patches */
+#if defined(POPPLER_VERSION_MINOR) && (POPPLER_VERSION_MINOR >= 73 || POPPLER_VERSION_MAJOR > 0 || \
+  (POPPLER_VERSION_MINOR == 72 && POPPLER_VERSION_MICRO == 1))
 #define POPPLER_HAS_PAGE_TEXT_LIST
+#endif
+
+/* Note: Before poppler 0.73, UTF8 conversion was completely broken on MacOS */
+#if defined(POPPLER_HAS_PAGE_TEXT_LIST) || !defined(__APPLE__)
+#define ustring_to_r ustring_to_utf8
+#else
+#define ustring_to_r ustring_to_latin1
 #endif
 
 using namespace Rcpp;
@@ -39,14 +48,16 @@ void find_poppler_data(){
 #endif
 
 String ustring_to_utf8(ustring x){
-  byte_array str = x.to_utf8();
-  String y(std::string(str.begin(), str.end()));
+  byte_array buf = x.to_utf8();
+  std::string str(buf.begin(), buf.end());
+  String y(str.c_str());
   y.set_encoding(CE_UTF8);
   return y;
 }
 
 String ustring_to_latin1(ustring x){
-  String y(x.to_latin1());
+  std::string str(x.to_latin1());
+  String y(str.c_str());
   y.set_encoding(CE_LATIN1);
   return y;
 }
@@ -58,7 +69,7 @@ List item_to_list(toc_item *item){
     out.push_back(item_to_list(children[i]));
   }
   return List::create(
-    _["title"] = ustring_to_latin1(item->title()),
+    _["title"] = ustring_to_r(item->title()),
     _["children"] = out
   );
 }
@@ -146,7 +157,7 @@ List poppler_pdf_info (RawVector x, std::string opw, std::string upw) {
     std::string keystr = keystrings[i];
     if(keystr.compare("CreationDate") == 0) continue;
     if(keystr.compare("ModDate") == 0) continue;
-    keys.push_back(ustring_to_latin1(doc->info_key(keystr)), keystr);
+    keys.push_back(ustring_to_r(doc->info_key(keystr)), keystr);
   }
 
   return List::create(
@@ -157,7 +168,7 @@ List poppler_pdf_info (RawVector x, std::string opw, std::string upw) {
     _["keys"] = keys,
     _["created"] = Datetime(doc->info_date("CreationDate")),
     _["modified"] = Datetime(doc->info_date("ModDate")),
-    _["metadata"] = ustring_to_latin1(doc->metadata()),
+    _["metadata"] = ustring_to_r(doc->metadata()),
     _["locked"] = doc->is_locked(),
     _["attachments"] = doc->has_embedded_files(),
     _["layout"] = layout_string(doc->page_layout())
@@ -180,7 +191,7 @@ List poppler_pdf_data (RawVector x, std::string opw, std::string upw) {
     IntegerVector y(boxes.size());
     Rcpp::LogicalVector space(boxes.size());
     for(size_t j = 0; j < boxes.size(); j++){
-      text[j] = ustring_to_utf8(boxes.at(j).text());
+      text[j] = ustring_to_r(boxes.at(j).text());
       width[j] = boxes.at(j).bbox().width();
       height[j] = boxes.at(j).bbox().height();
       x[j] = boxes.at(j).bbox().x();
@@ -188,18 +199,18 @@ List poppler_pdf_data (RawVector x, std::string opw, std::string upw) {
       space[j] = boxes.at(j).has_space_after();
     }
     out[i] = DataFrame::create(
-      _["text"] = text,
       _["width"] = width,
       _["height"] = height,
       _["x"] = x,
       _["y"] = y,
       _["space"] = space,
+      _["text"] = text,
       _["stringsAsFactors"] = false
     );
   }
   return out;
 #else //POPPLER_HAS_PAGE_TEXT_LIST
-  throw std::runtime_error(std::string("This feature requires poppler >= 0.63. You have ") + POPPLER_VERSION);
+  throw std::runtime_error(std::string("pdf_data() requires poppler >= 0.73. You have ") + POPPLER_VERSION);
 #endif
 }
 
@@ -223,6 +234,8 @@ CharacterVector poppler_pdf_text (RawVector x, std::string opw, std::string upw)
       target.set_bottom(target.bottom() - target.top());
       target.set_top(0);
     }
+
+    //Rprintf("Target: %f-%f x %f-%f\n", target.left(), target.right(), target.bottom(), target.top());
 
     /* Extract text */
     ustring str = p->text(target, show_text_layout);
@@ -271,7 +284,7 @@ List poppler_pdf_files (RawVector x, std::string opw, std::string upw) {
         _["mime"] = file->mime_type(),
         _["created"] = Datetime(file->creation_date()),
         _["modified"] = Datetime(file->modification_date()),
-        _["description"] = ustring_to_latin1(file->description()),
+        _["description"] = ustring_to_r(file->description()),
         _["data"] = res
       ));
     }
