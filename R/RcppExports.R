@@ -2,7 +2,7 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 set_poppler_data <- function(path) {
-    invisible(.Call('_pdftools_set_poppler_data', PACKAGE = 'pdftools', path))
+    .Call('_pdftools_set_poppler_data', PACKAGE = 'pdftools', path)
 }
 
 get_poppler_config <- function() {
@@ -19,6 +19,10 @@ poppler_pdf_data <- function(x, opw, upw) {
 
 poppler_pdf_text <- function(x, opw, upw) {
     .Call('_pdftools_poppler_pdf_text', PACKAGE = 'pdftools', x, opw, upw)
+}
+
+poppler_pdf_pagesize <- function(x, opw, upw) {
+    .Call('_pdftools_poppler_pdf_pagesize', PACKAGE = 'pdftools', x, opw, upw)
 }
 
 poppler_pdf_fonts <- function(x, opw, upw) {

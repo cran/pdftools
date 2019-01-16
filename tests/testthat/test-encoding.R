@@ -1,8 +1,7 @@
 context("encoding")
 
 test_that("text encoding english", {
-
-
+  skip_if(poppler_config()$version < "0.41")
   toc <-pdf_toc("hello.pdf")
   expect_equal(toc$children[[1]]$title, "Chapter 1")
 
@@ -13,7 +12,7 @@ test_that("text encoding english", {
   text <- pdf_text('hello.pdf')
   expect_match(text, 'Hello World')
 
-  skip_if_not(pdftools::poppler_config()$version >= "0.72.1")
+  skip_if_not(poppler_config()$has_pdf_data)
 
   data <- pdf_data('hello.pdf')
   expect_length(data[[1]]$text, 15)
@@ -21,7 +20,8 @@ test_that("text encoding english", {
 })
 
 test_that("text encoding korean", {
-
+  skip_on_os("solaris")
+  skip_if(poppler_config()$version < "0.41")
   info <- pdf_info("gangnam.pdf")
   psy <- "\uC2F8\uC774"
   gangnam <- "\uAC15\uB0A8\uC2A4\uD0C0\uC77C"
@@ -31,7 +31,7 @@ test_that("text encoding korean", {
   text <- pdf_text('gangnam.pdf')
   expect_match(text, gangnam)
 
-  skip_if_not(pdftools::poppler_config()$version >= "0.72.1")
+  skip_if_not(poppler_config()$has_pdf_data)
 
   data <- pdf_data('gangnam.pdf')
   expect_equal(data[[1]]$text[1:3], c(gangnam, psy, "12/4/2018"))
