@@ -1,7 +1,7 @@
 Package: pdftools
 Type: Package
 Title: Text Extraction, Rendering and Converting of PDF Documents
-Version: 2.1
+Version: 2.2
 Authors@R: person("Jeroen", "Ooms", role = c("aut", "cre"), email = "jeroen@berkeley.edu",
       comment = c(ORCID = "0000-0002-4035-0289"))
 Description: Utilities based on 'libpoppler' for extracting text, fonts, attachments and 
@@ -16,13 +16,13 @@ SystemRequirements: Poppler C++ API: libpoppler-cpp-dev (deb) or
         poppler-cpp-devel (rpm). The unit tests also require the
         'poppler-data' package (rpm/deb)
 Encoding: UTF-8
-Imports: Rcpp (>= 0.12.12)
+Imports: Rcpp (>= 0.12.12), qpdf
 LinkingTo: Rcpp
 Suggests: jpeg, png, webp, testthat
 RoxygenNote: 6.1.1
 NeedsCompilation: yes
-Packaged: 2019-01-16 18:04:12 UTC; jeroen
+Packaged: 2019-03-10 14:15:53 UTC; jeroen
 Author: Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)
 Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
 Repository: CRAN
-Date/Publication: 2019-01-16 20:40:03 UTC
+Date/Publication: 2019-03-10 14:50:02 UTC
