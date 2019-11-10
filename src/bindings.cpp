@@ -215,8 +215,10 @@ CharacterVector poppler_pdf_text (RawVector x, std::string opw, std::string upw)
     if(!p) continue; //missing page
     page::text_layout_enum show_text_layout = page::physical_layout;
 
+    /* media_box includes text in margins: https://github.com/ropensci/pdftools/issues/67 */
+    rectf target(p->page_rect(media_box));
+
     /* Workaround for bug https://github.com/ropensci/pdftools/issues/7 */
-    rectf target(p->page_rect());
     if(p->orientation() == page::landscape || p->orientation() == page::seascape){
       target.set_right(target.right() * 2);
     }
@@ -227,7 +229,7 @@ CharacterVector poppler_pdf_text (RawVector x, std::string opw, std::string upw)
       target.set_top(0);
     }
 
-    //Rprintf("Target: %f-%f x %f-%f\n", target.left(), target.right(), target.bottom(), target.top());
+    //REprintf("Target: %f-%f x %f-%f\n", target.left(), target.right(), target.bottom(), target.top());
 
     /* Extract text */
     ustring str = p->text(target, show_text_layout);
