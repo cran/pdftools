@@ -1,7 +1,7 @@
 Package: pdftools
 Type: Package
 Title: Text Extraction, Rendering and Converting of PDF Documents
-Version: 3.0.0
+Version: 3.0.1
 Authors@R: person("Jeroen", "Ooms", role = c("aut", "cre"), email = "jeroen@berkeley.edu",
       comment = c(ORCID = "0000-0002-4035-0289"))
 Description: Utilities based on 'libpoppler' for extracting text, fonts, attachments and 
@@ -21,8 +21,8 @@ LinkingTo: Rcpp
 Suggests: jpeg, png, webp, tesseract, testthat
 RoxygenNote: 7.1.1
 NeedsCompilation: yes
-Packaged: 2021-05-05 10:13:08 UTC; jeroen
+Packaged: 2021-05-06 08:39:58 UTC; jeroen
 Author: Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)
 Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
 Repository: CRAN
-Date/Publication: 2021-05-05 10:50:02 UTC
+Date/Publication: 2021-05-06 10:10:03 UTC
