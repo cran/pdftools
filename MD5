@@ -1,7 +1,7 @@
-86078a8a52b09e828a56cb6c82fe4d87 *DESCRIPTION
+9cdefc14744ad7b1bdf286c9525a971f *DESCRIPTION
 c3a98f95aadeb3c3f93a4a433b0f9980 *LICENSE
 9480dde763c1e76e49461aa47ea742c8 *NAMESPACE
-e3ff4a9df2f758fd0d7dcb7373db14cf *NEWS
+06e7f1976b1af4786921f285c2ee6156 *NEWS
 e916fd0bf6cab64284c5ee5aef0a950b *R/RcppExports.R
 1ceacdba739a966cf94332806ef59a44 *R/ocr.R
 875e0913126e931ffac28e2611b3cdc1 *R/onload.R
@@ -9,14 +9,13 @@ e916fd0bf6cab64284c5ee5aef0a950b *R/RcppExports.R
 44086fb92ffb45d9f5ae1ec191704c00 *R/render.R
 224834b3811f88f2d4214f10f711311f *R/tools.R
 bc7baead3b6080f04dc81efd2fe1ff39 *cleanup
-f7ce71a6e775004a36f6643d69ed18dc *configure
+97ce387bb1c28ea8875653f17aae929b *configure
 0de4dd35b811a1ab24db33cc19f1c662 *man/pdf_ocr.Rd
 0d73516d4bb4960c3a0e1bb23b75f318 *man/pdf_render_page.Rd
 0a77012335f2e8751dc7567adc5fc9a4 *man/pdftools.Rd
 acb18ea92f7def7c6868624af7f787f6 *man/qpdf.Rd
 b691d0e444642745f81fb98c6accf0c6 *src/Makevars.in
-2cec33791efd347cbcb051402d7cf9c4 *src/Makevars.ucrt
-46a7b2e45532852cd8b12cdb88a70a85 *src/Makevars.win
+7994e6068a811529f22435892dc3b6dc *src/Makevars.win
 5da224faffd93fb7bc08499f33fd7733 *src/RcppExports.cpp
 59a2ad5c798b074db4906ef300e05c92 *src/bindings.cpp
 5ed20009ed73f94c5d4979ce63b62050 *tests/poppler.R
