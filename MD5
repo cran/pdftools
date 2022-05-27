@@ -1,7 +1,7 @@
-9cdefc14744ad7b1bdf286c9525a971f *DESCRIPTION
+5cb0e45399d0a9f68c2dfc3405c0346c *DESCRIPTION
 c3a98f95aadeb3c3f93a4a433b0f9980 *LICENSE
 9480dde763c1e76e49461aa47ea742c8 *NAMESPACE
-06e7f1976b1af4786921f285c2ee6156 *NEWS
+1e7e9fccc4e87811bffe61d88cc4da08 *NEWS
 e916fd0bf6cab64284c5ee5aef0a950b *R/RcppExports.R
 1ceacdba739a966cf94332806ef59a44 *R/ocr.R
 875e0913126e931ffac28e2611b3cdc1 *R/onload.R
@@ -9,7 +9,7 @@ e916fd0bf6cab64284c5ee5aef0a950b *R/RcppExports.R
 44086fb92ffb45d9f5ae1ec191704c00 *R/render.R
 224834b3811f88f2d4214f10f711311f *R/tools.R
 bc7baead3b6080f04dc81efd2fe1ff39 *cleanup
-97ce387bb1c28ea8875653f17aae929b *configure
+c6f917f5d22329976ca927e4b7618856 *configure
 0de4dd35b811a1ab24db33cc19f1c662 *man/pdf_ocr.Rd
 0d73516d4bb4960c3a0e1bb23b75f318 *man/pdf_render_page.Rd
 0a77012335f2e8751dc7567adc5fc9a4 *man/pdftools.Rd
