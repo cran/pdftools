@@ -1,7 +1,7 @@
-5cb0e45399d0a9f68c2dfc3405c0346c *DESCRIPTION
+4e3a63e46f255fdc93b9e2070469e6b6 *DESCRIPTION
 c3a98f95aadeb3c3f93a4a433b0f9980 *LICENSE
 9480dde763c1e76e49461aa47ea742c8 *NAMESPACE
-1e7e9fccc4e87811bffe61d88cc4da08 *NEWS
+c5b2e3429bb524a58fdc73594a567296 *NEWS
 e916fd0bf6cab64284c5ee5aef0a950b *R/RcppExports.R
 1ceacdba739a966cf94332806ef59a44 *R/ocr.R
 875e0913126e931ffac28e2611b3cdc1 *R/onload.R
@@ -17,7 +17,7 @@ acb18ea92f7def7c6868624af7f787f6 *man/qpdf.Rd
 b691d0e444642745f81fb98c6accf0c6 *src/Makevars.in
 7994e6068a811529f22435892dc3b6dc *src/Makevars.win
 5da224faffd93fb7bc08499f33fd7733 *src/RcppExports.cpp
-59a2ad5c798b074db4906ef300e05c92 *src/bindings.cpp
+64cb707fae16be0260282ea1c690808b *src/bindings.cpp
 5ed20009ed73f94c5d4979ce63b62050 *tests/poppler.R
 bd7d7d2bdf4e3d64d5012021eb9dab09 *tests/poppler.Rout.save
 abcc78483229f22c010023a14aa538e8 *tests/testthat.R
