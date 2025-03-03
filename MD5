@@ -1,7 +1,7 @@
-1a144ba662d0fe32e6f1c4b988ef2e5c *DESCRIPTION
+904d959e7026f226bf5ba1b349b10c78 *DESCRIPTION
 c3a98f95aadeb3c3f93a4a433b0f9980 *LICENSE
 9480dde763c1e76e49461aa47ea742c8 *NAMESPACE
-425f209ca3ccad1c8040333d90ee2a6c *NEWS
+35874d2c2f92c0dfdb813b2299fb633f *NEWS
 e916fd0bf6cab64284c5ee5aef0a950b *R/RcppExports.R
 0e290515ed011a2b7e5ffcc9a3455f08 *R/ocr.R
 875e0913126e931ffac28e2611b3cdc1 *R/onload.R
@@ -15,7 +15,7 @@ d5f2edca8707fc10a629675eb0456c5e *configure
 0a77012335f2e8751dc7567adc5fc9a4 *man/pdftools.Rd
 acb18ea92f7def7c6868624af7f787f6 *man/qpdf.Rd
 563c5a175838902bc19378a679697c14 *src/Makevars.in
-d999776ed74d6aa9adb8c5f65d049bbb *src/Makevars.win
+443ca394ef6e6896137662765e47b6c2 *src/Makevars.win
 5da224faffd93fb7bc08499f33fd7733 *src/RcppExports.cpp
 72cb3b0ec776f3a835d92f395f110a7a *src/bindings.cpp
 abcc78483229f22c010023a14aa538e8 *tests/testthat.R
