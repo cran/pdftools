@@ -41,9 +41,10 @@ pdf_info <- function(pdf, opw = "", upw = "") {
 }
 
 #' @rdname pdftools
+#' @param raw return text in raw stream order. Default is to use physical layout order.
 #' @export
-pdf_text <- function(pdf, opw = "", upw = "") {
-  poppler_pdf_text(loadfile(pdf), opw, upw)
+pdf_text <- function(pdf, opw = "", upw = "", raw = FALSE) {
+  poppler_pdf_text(loadfile(pdf), opw, upw, raw)
 }
 
 #' @rdname pdftools

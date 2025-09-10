@@ -13,7 +13,7 @@
 \usage{
 pdf_info(pdf, opw = "", upw = "")
 
-pdf_text(pdf, opw = "", upw = "")
+pdf_text(pdf, opw = "", upw = "", raw = FALSE)
 
 pdf_data(pdf, font_info = FALSE, opw = "", upw = "")
 
@@ -31,6 +31,8 @@ pdf_pagesize(pdf, opw = "", upw = "")
 \item{opw}{string with owner password to open pdf}
 
 \item{upw}{string with user password to open pdf}
+
+\item{raw}{return text in raw stream order. Default is to use physical layout order.}
 
 \item{font_info}{if TRUE, extract font-data for each box. Be careful, this
 requires a very recent version of poppler and will error otherwise.}
