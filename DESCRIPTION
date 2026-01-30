@@ -1,7 +1,7 @@
 Package: pdftools
 Type: Package
 Title: Text Extraction, Rendering and Converting of PDF Documents
-Version: 3.6.0
+Version: 3.7.0
 Authors@R: person("Jeroen", "Ooms", role = c("aut", "cre"), email = "jeroenooms@gmail.com",
       comment = c(ORCID = "0000-0002-4035-0289"))
 Description: Utilities based on 'libpoppler' <https://poppler.freedesktop.org> for extracting
@@ -20,8 +20,8 @@ LinkingTo: Rcpp
 Suggests: png, webp, tesseract, testthat
 RoxygenNote: 7.3.2
 NeedsCompilation: yes
-Packaged: 2025-09-09 11:28:39 UTC; jeroen
+Packaged: 2026-01-30 13:32:35 UTC; jeroen
 Author: Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>)
 Maintainer: Jeroen Ooms <jeroenooms@gmail.com>
 Repository: CRAN
-Date/Publication: 2025-09-10 07:50:15 UTC
+Date/Publication: 2026-01-30 14:20:02 UTC

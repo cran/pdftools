@@ -1,7 +1,7 @@
-faeaf326d4a67f64f16a0642b45df0ce *DESCRIPTION
+c0996be36f0904d96bca12c4163cb8eb *DESCRIPTION
 c3a98f95aadeb3c3f93a4a433b0f9980 *LICENSE
 9480dde763c1e76e49461aa47ea742c8 *NAMESPACE
-1d3816693fd1c1aadc35f8304eaec2db *NEWS
+e3700f5317696adba79757bb5a0b5fee *NEWS
 af92e8d39d9d2a9066633c28faa4987b *R/RcppExports.R
 0e290515ed011a2b7e5ffcc9a3455f08 *R/ocr.R
 875e0913126e931ffac28e2611b3cdc1 *R/onload.R
@@ -17,7 +17,7 @@ acb18ea92f7def7c6868624af7f787f6 *man/qpdf.Rd
 563c5a175838902bc19378a679697c14 *src/Makevars.in
 443ca394ef6e6896137662765e47b6c2 *src/Makevars.win
 f3546bca437d0a76eab404e08417f6a4 *src/RcppExports.cpp
-06b4267242fceaf8cc57951d32cb04ce *src/bindings.cpp
+6f913fc978b64985b923f7986e98cf1d *src/bindings.cpp
 abcc78483229f22c010023a14aa538e8 *tests/testthat.R
 fa18a433e2e92e88989590681a7eb937 *tests/testthat/active-pdf-links.original.pdf
 f17a1caff172ba5a07cae94ce41d401c *tests/testthat/chinese.pdf
