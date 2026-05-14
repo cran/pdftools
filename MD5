@@ -1,7 +1,7 @@
-dc4dbdec032fc314366b5c9c1b447bb9 *DESCRIPTION
+55c7221a2aa867776d2af34cc5920645 *DESCRIPTION
 c3a98f95aadeb3c3f93a4a433b0f9980 *LICENSE
 9480dde763c1e76e49461aa47ea742c8 *NAMESPACE
-704710be895ab24f244d8ebab0daf686 *NEWS
+24f7cf8592c777efd1523c03e0a53888 *NEWS
 af92e8d39d9d2a9066633c28faa4987b *R/RcppExports.R
 0e290515ed011a2b7e5ffcc9a3455f08 *R/ocr.R
 875e0913126e931ffac28e2611b3cdc1 *R/onload.R
@@ -15,7 +15,7 @@ d5f2edca8707fc10a629675eb0456c5e *configure
 eb55635942a99a92b2a4595305c44020 *man/pdftools.Rd
 acb18ea92f7def7c6868624af7f787f6 *man/qpdf.Rd
 563c5a175838902bc19378a679697c14 *src/Makevars.in
-443ca394ef6e6896137662765e47b6c2 *src/Makevars.win
+04e94f0323e9ad0678e7655aeedb28d4 *src/Makevars.win
 f3546bca437d0a76eab404e08417f6a4 *src/RcppExports.cpp
 1418fea159e829637d9ba8457769e3e8 *src/bindings.cpp
 abcc78483229f22c010023a14aa538e8 *tests/testthat.R
@@ -31,4 +31,4 @@ ce6a846948aa6d1ee845a3cfd207a2ca *tests/testthat/test-chinese.R
 feff5e6d07e733080a7e6932610784e7 *tests/testthat/test-encoding.R
 2a841a8777f6ce2e2afffecd61e64776 *tests/testthat/test-reading.R
 7b195a388a44204c252c19907ad62315 *tests/testthat/test-render.R
-0f016a257dde9ee0d778af0b4dec13b5 *tools/winlibs.R
+155a91a805f1de21dc612c91deee7efb *tools/winlibs.R
